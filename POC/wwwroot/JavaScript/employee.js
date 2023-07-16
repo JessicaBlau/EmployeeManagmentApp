@@ -99,8 +99,9 @@ addForm.addEventListener('submit', function (e) {
                 if (xhr.status === 200) {
                     var newEmployeeID = JSON.parse(xhr.responseText);
                     console.log('New employee ID:', newEmployeeID);
-                    // Refresh the employee list
+                    // Refresh the employee list and dropdown list
                     loadEmployees();
+                    fetchEmployeeIds()
                 } else {
                     console.log('Failed to add employee');
                 }
@@ -141,7 +142,8 @@ function loadEmployeeDetails(employeeId) {
                         '<p>Name: ' + employee.name + '</p>' +
                         '<p>Job: ' + employee.job + '</p>' +
                         '<p>Title: ' + employee.title + '</p>' +
-                        '<p>Age: ' + employee.age + '</p>';
+                        '<p>Age: ' + employee.age + '</p>' +
+                        '<p>Company: ' + employee.company + '</p>';
                 } else {
                     console.log('Failed to retrieve employee details');
                 }
@@ -209,7 +211,6 @@ var select = document.getElementById('ids');
 
 // Function to fetch the employee IDs from the API
 function fetchEmployeeIds() {
-    // Make an AJAX request to the API
     // Make an AJAX request to retrieve the token from the server
     $.ajax({
         url: '/api/employees/token',
@@ -224,6 +225,13 @@ function fetchEmployeeIds() {
                 },
                 success: function (response) {
                     var employees = response;
+
+                    select.innerHTML = "";
+
+                    var option = document.createElement('option');
+                    option.value = "-1";
+                    option.textContent = "select";
+                    select.appendChild(option);
 
                     // Loop through the employees and add options to the select dropdown
                     employees.forEach(function (employee) {
