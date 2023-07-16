@@ -1,0 +1,115 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #233d55;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 5em;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    flex-basis: 100%;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+h4 {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Employee List */
+#employeeList {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: lightblue;
+}
+
+#employeeItems {
+    list-style: none;
+    padding: 0;
+}
+
+    #employeeItems li {
+        margin-bottom: 5px;
+    }
+
+/* Forms */
+.form {
+    flex-basis: 30%;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid;
+}
+
+    .form h2 {
+        margin-top: 0;
+    }
+
+    .form form {
+        margin-top: 10px;
+    }
+
+        .form form button {
+            margin-top: 10px;
+        }
+
+/* Employee Details */
+#employeeDetails {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: lightblue;
+}
+
+/* Delete Employee */
+#deleteEmployeeForm p {
+    margin-bottom: 10px;
+}
+
+/* Theme Colors */
+body {
+    background-color: #ffffcc;
+}
+
+#employeeList {
+    background-color: lightblue;
+}
+
+.form {
+    background-color: lightgreen;
+}
+
+#employeeDetails {
+    background-color: lightblue;
+}
