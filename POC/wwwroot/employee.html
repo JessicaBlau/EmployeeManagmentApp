@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Employee Manager</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+</head>
+
+<body>
+    <h1>Employee Manager</h1>
+    <!-- Container for displaying the list of employees -->
+    <div id="employeeList">
+        <h2>List of Employees</h2>
+        <h4>To view employee details please click on empoyee name</h4>
+        <ul id="employeeItems"></ul>
+    </div>
+
+    <!-- Form for adding a new employee -->
+    <div id="addEmployeeForm">
+        <h2>Add Employee</h2>
+        <form id="employeeForm">
+
+            <button id="provideId" onclick="provideIdCheck()">Provide an id</button>
+            <label id="idLabel" for="id" style="display:none">ID:</label>
+            <input type="text" id="employeeIdAdd" style="display:none">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="job">Job:</label>
+            <input type="text" id="job" required>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="company">Company:</label>
+            <input type="text" id="company" required>
+
+            <label for="workstationNo">Workstation No:</label>
+            <input type="text" id="workstationNo">
+
+            <label for="site">Site:</label>
+            <input type="text" id="site" required>
+
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
+
+    <!-- Container for displaying information about a single employee -->
+    <div id="employeeDetails">
+        <h2>Employee Details</h2>
+        <div id="employeeInfo"></div>
+    </div>
+
+    <!-- Container for updating information about a single employee -->
+    <div id="updateEmployeeForm">
+        <h2>Update Employee</h2>
+        <h4>Please provide employee id that you want to update</h4>
+        <form id="updateForm">
+            <label for="idLabel">ID:</label>
+            <input type="text" id="employeeIdUpdate" required>
+
+            <label for="updateName">Name:</label>
+            <input type="text" id="updateName">
+
+            <label for="updateJob">Job:</label>
+            <input type="text" id="updateJob">
+
+            <label for="updateTitle">Title:</label>
+            <input type="text" id="updateTitle">
+
+            <label for="updateAge">Age:</label>
+            <input type="number" id="updateAge">
+
+            <label for="updateCompany">Company:</label>
+            <input type="text" id="updateCompany">
+
+            <label for="updateWorkstationNo">Workstation No:</label>
+            <input type="text" id="updateWorkstationNo">
+
+            <label for="updateSite">Site:</label>
+            <input type="text" id="updateSite">
+
+            <button type="submit">Update Employee</button>
+        </form>
+    </div>
+
+    <!-- Container for deleting a single employee -->
+    <div id="deleteEmployeeForm">
+        <h2>Delete Employee</h2>
+        <p>Are you sure you want to delete this employee?</p>
+
+        <label for="provide id">Provide an id:</label>
+
+        <select name="ids" id="ids">
+        </select>
+
+        <!-- label for="idLabel">Employee Id:</label>
+        <input type="text" id="deleteEmployeeId" required -->
+
+        <button id="deleteButton">Delete Employee</button>
+    </div>
+
+    <script src="JavaScript/employee.js"></script>
+</body>
+
+</html>
