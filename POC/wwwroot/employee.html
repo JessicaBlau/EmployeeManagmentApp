@@ -13,7 +13,7 @@
     <!-- Container for displaying the list of employees -->
     <div id="employeeList">
         <h2>List of Employees</h2>
-        <h4>To view emploeyee details please click on empoyee name</h4>
+        <h4>To view employee details please click on empoyee name</h4>
         <ul id="employeeItems"></ul>
     </div>
 
@@ -23,8 +23,8 @@
         <form id="employeeForm">
 
             <button id="provideId" onclick="provideIdCheck()">Provide an id</button>
-            <label id="idLabel" for="id" style="display:none">Id:</label>
-            <input type="text" id="employeeId" style="display:none">
+            <label id="idLabel" for="id" style="display:none">ID:</label>
+            <input type="text" id="employeeIdAdd" style="display:none">
 
             <label for="name">Name:</label>
             <input type="text" id="name" required>
@@ -60,10 +60,10 @@
     <!-- Container for updating information about a single employee -->
     <div id="updateEmployeeForm">
         <h2>Update Employee</h2>
-        <h4>Please provide emploeyee id that you want to update</h4>
+        <h4>Please provide employee id that you want to update</h4>
         <form id="updateForm">
-            <label for="idLabel">Id:</label>
-            <input type="text" id="employeeId" required>
+            <label for="idLabel">ID:</label>
+            <input type="text" id="employeeIdUpdate" required>
 
             <label for="updateName">Name:</label>
             <input type="text" id="updateName">
@@ -98,7 +98,6 @@
         <label for="provide id">Provide an id:</label>
 
         <select name="ids" id="ids">
-            <option value="-1">select</option>
         </select>
 
         <!-- label for="idLabel">Employee Id:</label>

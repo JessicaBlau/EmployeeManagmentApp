@@ -33,12 +33,12 @@ function loadEmployees() {
                         employeeList.appendChild(li);
                     });
                 } else {
-                    console.log('Failed to retrieve employees');
+                    alert('Failed to retrieve employees');
                 }
             };
             employeesXhr.send();
         } else {
-            console.log('Failed to retrieve token');
+            alert('Failed to retrieve token');
         }
     };
     xhr.send();
@@ -49,7 +49,7 @@ function loadEmployees() {
 // Provide id for new employee 
 function provideIdCheck() {
     var idLabel = document.getElementById('idLabel');
-    var employeeId = document.getElementById('employeeId');
+    var employeeId = document.getElementById('employeeIdAdd');
     if (employeeId.style.display === "none" && idLabel.style.display === "none") {
         employeeId.style.display = "block";
         idLabel.style.display = "block";
@@ -71,14 +71,14 @@ addForm.addEventListener('submit', function (e) {
     }
 
     var formValues = {
-        id: document.getElementById('employeeId').value,
-        name: document.getElementById('name').value,
-        job: document.getElementById('job').value,
-        title: document.getElementById('title').value,
-        age: document.getElementById('age').value,
-        company: document.getElementById('company').value,
-        workstationNo: document.getElementById('workstationNo').value,
-        site: document.getElementById('site').value
+        id: document.getElementById('employeeIdAdd').value,
+        name: document.getElementById('name').value == "" ? "not provided" : document.getElementById('name').value,
+        job: document.getElementById('job').value == "" ? "not provided" : document.getElementById('job').value,
+        title: document.getElementById('title').value == "" ? "not provided" : document.getElementById('title').value,
+        age: document.getElementById('age').value == "" ? 0 : document.getElementById('age').value,
+        company: document.getElementById('company').value == "" ? "not provided" : document.getElementById('company').value,
+        workstationNo: document.getElementById('workstationNo').value == "" ? "not provided" : document.getElementById('workstationNo').value,
+        site: document.getElementById('site').value == "" ? "not provided" : document.getElementById('site').value
     };
     // Perform an AJAX request to add the new employee
     var xhr = new XMLHttpRequest();
@@ -103,12 +103,12 @@ addForm.addEventListener('submit', function (e) {
                     loadEmployees();
                     fetchEmployeeIds()
                 } else {
-                    console.log('Failed to add employee');
+                    alert('Failed to add employee');
                 }
             };
             xhr.send(JSON.stringify(formValues));
         } else {
-            console.log('Failed to retrieve token');
+            alert('Failed to retrieve token');
         }
     };
     tokenRequest.send();
@@ -145,12 +145,12 @@ function loadEmployeeDetails(employeeId) {
                         '<p>Age: ' + employee.age + '</p>' +
                         '<p>Company: ' + employee.company + '</p>';
                 } else {
-                    console.log('Failed to retrieve employee details');
+                    alert('Failed to retrieve employee details');
                 }
             };
             xhr.send();
         } else {
-            console.log('Failed to retrieve token');
+            alert('Failed to retrieve token');
         }
     };
     tokenRequest.send();
@@ -163,15 +163,16 @@ var updateForm = document.getElementById('updateForm');
 updateForm.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevent form submission
 
-    var employeeId = document.getElementById('employeeId').value;
+    var employeeId = document.getElementById('employeeIdUpdate').value;
     var formValues = {
-        name: document.getElementById('updateName').value,
-        job: document.getElementById('updateJob').value,
-        title: document.getElementById('updateTitle').value,
-        age: document.getElementById('updateAge').value,
-        company: document.getElementById('updateCompany').value,
-        workstationNo: document.getElementById('updateWorkstationNo').value,
-        site: document.getElementById('updateSite').value
+        id: employeeId,
+        name: document.getElementById('updateName').value == "" ? "not provided" : document.getElementById('updateName').value,
+        job: document.getElementById('updateJob').value == "" ? "not provided" : document.getElementById('updateJob').value,
+        title: document.getElementById('updateTitle').value == "" ? "not provided" : document.getElementById('updateTitle').value,
+        age: document.getElementById('updateAge').value == "" ? 0 : document.getElementById('updateAge').value,
+        company: document.getElementById('updateCompany').value == "" ? "not provided" : document.getElementById('updateTitle').value,
+        workstationNo: document.getElementById('updateWorkstationNo').value == "" ? "not provided" : document.getElementById('updateWorkstationNo').value,
+        site: document.getElementById('updateSite').value == "" ? "not provided" : document.getElementById('updateSite').value
     };
 
     // Perform an AJAX request to update the employee
@@ -193,17 +194,19 @@ updateForm.addEventListener('submit', function (e) {
                     console.log('Employee updated');
                     // Refresh the employee details
                     loadEmployeeDetails(employeeId);
+                    fetchEmployeeIds()
                 } else {
-                    console.log('Failed to update employee');
+                    alert('Failed to update employee');
                 }
             };
             xhr.send(JSON.stringify(formValues));
         } else {
-            console.log('Failed to retrieve token');
+            alert('Failed to retrieve token');
         }
     };
     tokenRequest.send();
 
+    updateForm.reset()
 });
 
 // Get the select element
@@ -242,12 +245,12 @@ function fetchEmployeeIds() {
                     });
                 },
                 error: function (error) {
-                    console.log('Failed to fetch employee IDs');
+                    alert('Failed to fetch employee IDs');
                 }
             });
         },
         error: function (error) {
-            console.log('Failed to retrieve token');
+            alert('Failed to retrieve token');
         }
     });
 
@@ -288,13 +291,13 @@ function deleteEmployee(employeeId) {
                     // Refresh the employee list
                     loadEmployees();
                 } else {
-                    console.log('Failed to delete employee');
+                    alert('Failed to delete employee');
                 }
             };
             xhr.send();
             document.getElementById('ids').value = "-1";
         } else {
-            console.log('Failed to retrieve token from cache');
+            alert('Failed to retrieve token from cache');
         }
     };
     tokenXhr.send();
